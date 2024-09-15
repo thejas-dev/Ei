@@ -42,18 +42,18 @@ class Editor {
     private TextArea textArea;
 
     public Editor() {
-        history = new LinkedList<>();
+        history = new ArrayDeque<>();
         textArea = new TextArea();
     }
 
     public void write(String text) {
+        history.addLast(textArea.takeSnapshot());
         textArea.set(text);
-        history.add(textArea.takeSnapshot());
     }
 
     public void undo() {
         if (!history.isEmpty()) {
-            textArea.restore(history.pop());
+            textArea.restore(history.removeLast());
         } else {
             System.out.println("No actions to undo.");
         }
@@ -71,10 +71,15 @@ public class MomentoPattern {
 
         editor.write("Hello World");
         editor.write("Good Morning");
+        editor.write("Good Evening");
+
+        editor.getLastAddedText(); // Output: Good Evening
+
+        editor.undo(); // Undo "Good Evening"
 
         editor.getLastAddedText(); // Output: Good Morning
 
-        editor.undo();
+        editor.undo(); // Undo "Good Morning"
 
         editor.getLastAddedText(); // Output: Hello World
     }
