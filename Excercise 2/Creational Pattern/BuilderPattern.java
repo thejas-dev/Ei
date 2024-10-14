@@ -77,7 +77,7 @@ public class BuilderPattern{
 			+ url.topLevelDomain + "/" + url.path);
 
 		URL.URLBuilder builder2 = new URL.URLBuilder();
-		builder2.setProtocol("http")
+		builder2.setProtocol("https")
 			.setDomainName("example")
 			.setTopLevelDomain("com")
 			.setPort("80")

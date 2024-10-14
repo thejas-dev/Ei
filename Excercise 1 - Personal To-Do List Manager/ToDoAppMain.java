@@ -42,6 +42,7 @@ public class ToDoAppMain {
                 choice = scanner.nextInt();
             }catch (Exception e) {
                 System.out.println("Unexpected Input!");
+                continue;
             }
             
             scanner.nextLine();  // Consume newline

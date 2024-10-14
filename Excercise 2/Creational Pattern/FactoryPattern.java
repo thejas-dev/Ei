@@ -18,6 +18,8 @@ class Bike implements Vehicle{
 	public void drive(){
 		System.out.println("Driving a bike");
 	}
+
+	public void stunt(){System.out.println("Stunting");}
 }
 
 

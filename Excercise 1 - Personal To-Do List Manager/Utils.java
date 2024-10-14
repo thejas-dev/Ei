@@ -18,7 +18,7 @@ public class Utils{
         String tempPriority = scanner.nextLine();
         Priority priority = null;
 
-        if(tempPriority.length() > 0){
+        if(!tempPriority.isEmpty()){
             try{
                 priority = Priority.valueOf(tempPriority.toUpperCase());
             }catch (IllegalArgumentException e) {
@@ -49,7 +49,7 @@ public class Utils{
 	// Ask Due Time of Task From User
 	public static LocalTime getDueTimeFromUser(){
         LocalTime currentTime = LocalTime.now(); // Current Time
-        currentTime = currentTime.plus(10, ChronoUnit.MINUTES);
+        currentTime = currentTime.plusMinutes(10);
 		
 		System.out.print("Enter due time (format : hh:mm (AM/PM), default: +10 mins): ");
         String dueTime = scanner.nextLine();
@@ -58,8 +58,7 @@ public class Utils{
         
         if(dueTime.length() > 0){
 	        try{
-	        	LocalTime time = LocalTime.parse(dueTime,formatter); 
-	            return time;
+                return LocalTime.parse(dueTime,formatter);
 	        }catch (Exception e) {
 	            System.out.println("Time Format is incorrect! Set due time in ten minutes");
 	            return currentTime;

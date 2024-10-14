@@ -73,7 +73,7 @@ class Task {
         }
 
         public Task build() {
-            if(this.description.length() > 0) return new Task(this);
+            if(!this.description.isEmpty()) return new Task(this);
             else {
                 System.out.print("Cannot create task, description is empty\n");
                 return null;

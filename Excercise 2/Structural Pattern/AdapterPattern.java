@@ -5,9 +5,14 @@ interface MediaPlayer {
     void play(String audioType, String fileName);
 }
 
-// Adapter
-class VlcPlayer {
-    void playVlc(String fileName) {
+interface VlcPlayerInterface{
+    void playVlc(String fileName);
+}
+
+// Adaptee
+class VlcPlayer implements VlcPlayerInterface {
+    @Override
+    public void playVlc(String fileName) {
         System.out.println("Playing VLC file: " + fileName);
     }
 }
@@ -33,7 +38,7 @@ class VlcPlayerAdapter implements MediaPlayer {
 }
 
 // Client Code
-public class AdapterPatternDemo {
+public class AdapterPattern {
     public static void main(String[] args) {
         // Creating an instance of VlcPlayer
         VlcPlayer vlcPlayer = new VlcPlayer();

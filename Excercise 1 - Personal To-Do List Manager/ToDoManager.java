@@ -2,7 +2,7 @@
 // This class implements the core functionalities of the To-Do list manager, 
 // using the Singleton pattern to ensure a single instance. It handles adding, 
 // editing, deleting, viewing tasks, and provides undo functionality via the 
-// Memento pattern of Momento Class. It also manages notifications for task
+// Momento pattern of Momento Class. It also manages notifications for task
 // deadlines and logs actions for task operations.
 
 import java.util.*;
@@ -20,7 +20,7 @@ import java.time.format.DateTimeFormatter;
 public class ToDoManager {
     private static ToDoManager instance;
     private List<Task> tasks;
-    private Deque<Memento> history;
+    private Deque<Momento> history;
     private Timer notificationTimer;
     private Logger logger;
 
@@ -81,7 +81,7 @@ public class ToDoManager {
     // View tasks (all, completed, pending)
     public void viewTasks(String filter) {
         System.out.println();
-        if(tasks.size() < 1) {System.out.println("Task List is Empty!"); return;}
+        if(tasks.isEmpty()) {System.out.println("Task List is Empty!"); return;}
         switch (filter.toLowerCase()) {
             case "all":
                 tasks.forEach(System.out::println);
@@ -106,7 +106,7 @@ public class ToDoManager {
 
     // Edit tasks based on search field
     public void editTask(String filter){
-        Task result = findTaskByDescription(filter);
+        Task result = this.findTaskByDescription(filter);
 
         if(result != null){
             saveState();
@@ -226,6 +226,6 @@ public class ToDoManager {
 
     // Save the current state to history
     private void saveState() {
-        history.push(new Memento(new ArrayList<>(tasks)));
+        history.push(new Momento(new ArrayList<>(tasks)));
     }
 }

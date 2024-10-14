@@ -38,8 +38,8 @@ class TextArea {
 
 // Caretaker class
 class Editor {
-    private Deque<TextArea.Momento> history;
-    private TextArea textArea;
+    private final Deque<TextArea.Momento> history;
+    private final TextArea textArea;
 
     public Editor() {
         history = new ArrayDeque<>();

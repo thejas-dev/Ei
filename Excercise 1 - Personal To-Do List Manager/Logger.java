@@ -29,7 +29,7 @@ public class Logger{
 
 	// Displaying history line by line
 	public void showHistory(){
-		if(history.size() > 0){
+		if(!history.isEmpty()){
 			System.out.println("History :- ");
 			for(String text : history){
 				System.out.println(text);
